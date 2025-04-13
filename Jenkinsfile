@@ -8,10 +8,10 @@ pipeline {
 
     stages {
         stage('Clone Code') {
-            steps {
-                git 'https://github.com/KanavJETHI/quotehub.git'  // Update with your correct repository URL
-            }
-        }
+    steps {
+        git credentialsId: 'github-credentials', url: 'https://github.com/KanavJETHI/quotehub.git'
+    }
+}
         
         stage('Build Docker Image') {
             steps {
