@@ -25,11 +25,11 @@ pipeline {
             steps {
                 script {
             // Stop any container using port 8081
-                    bat 'for /f "tokens=*" %i in (\'docker ps -q --filter "publish=8081"\') do docker stop %i'
-                    bat 'for /f "tokens=*" %i in (\'docker ps -a -q --filter "publish=8081"\') do docker rm %i'
-
-            // Now run the new container
-                    bat "docker run -d --name quotehub_container -p 8081:80 quotehub"
+                    bat '''
+                        FOR /F %%i IN ('docker ps -q --filter "publish=8081"') DO docker stop %%i
+                        FOR /F %%i IN ('docker ps -a -q --filter "publish=8081"') DO docker rm %%i
+                        docker run -d --name quotehub_container -p 8081:80 quotehub
+                        '''
                 }
             }
         }
