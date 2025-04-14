@@ -24,7 +24,12 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    bat "docker run -d -p 8081:80 ${dockerImage.imageName()}"  // Update port if necessary
+            // Stop any container using port 8081
+                    bat 'for /f "tokens=*" %i in (\'docker ps -q --filter "publish=8081"\') do docker stop %i'
+                    bat 'for /f "tokens=*" %i in (\'docker ps -a -q --filter "publish=8081"\') do docker rm %i'
+
+            // Now run the new container
+                    bat "docker run -d --name quotehub_container -p 8081:80 quotehub"
                 }
             }
         }
