@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Code') {
     steps {
-        git credentialsId: '{AQAAABAAAABgz8lxxbpoArM1FVNkQ3cr+hnireVVgZ6nqDbdm7pZntlrCKWl9NQ9JI4xMmG4F9hr6gKpcQEcN9KVcw69gULpM4HXh6bph72K+xexYI9Atg9qm43CMS3L6WGSgqGnLbvEACRaUf/CB0z6mS1QoVvYLg==}', url: 'https://github.com/KanavJETHI/quotehub.git'
+        git credentialsId: 'github-kanav', url: 'https://github.com/KanavJETHI/quotehub.git'
     }
 }
         
