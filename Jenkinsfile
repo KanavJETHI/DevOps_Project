@@ -24,7 +24,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    dockerImage.run('-d -p 8081:80')  // Update port if necessary
+                    bat "docker run -d -p 8081:80 ${dockerImage.imageName()}"  // Update port if necessary
                 }
             }
         }
