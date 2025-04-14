@@ -8,10 +8,10 @@ pipeline {
 
     stages {
         stage('Clone Code') {
-    steps {
-        git credentialsId: 'github-kanav', url: 'https://github.com/KanavJETHI/DevOps_Project.git'
-    }
-}
+            steps {
+                git credentialsId: 'github-kanav', url: 'https://github.com/KanavJETHI/DevOps_Project.git'
+            }
+        }
         
         stage('Build Docker Image') {
             steps {
